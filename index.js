@@ -44,25 +44,50 @@ let todos = [
     title: "study",
   },
 ];
+
+// Create an alert that lists all users
+
 let message =""
 for (let user of users) {
-  message = message + (`User Id ${(user.id)} this is ${user.name} and He/She lives in ${user.city} `);
+  message = message + (`User Id ${user.id} this is ${user.name} and He/She lives in ${user.city}
+  `);
 }
 alert(message)
 
+// - Prompt the user for a user id
+// find the user with this id
 let findId = Number(prompt("Enter the id"))
 console.log(findId)
+let theUser = null
+for(let user of users){
+  if(user.id === findId){
+    theUser = user
+    break
+  }
+}
+console.log(`the user we found is:`, theUser)
 
-// let Message1 = []
-// for(let id of todos){
-//   if(findId === id.userId){
-//     message += findId
+// find the todos list with this user id
+let theTodos = []
+for(let todo of todos){
+  if( todo.userId === findId){
+    theTodos.push(todo)
+     break
+  }
+}
+    console.log(`the todos we found;`, theTodos)
     
 
-//   }
-// }
+// - Display an alert with the username and all the todos titles that belong to that user
 
-// alert(Message1)
+let finalMessage = ""
+
+finalMessage+= `hello ${theUser.name}\n\n`
+
+for(let todo of theTodos){
+  finalMessage +=`${todo.title}\n `
+}
+alert(finalMessage)
  
 
   
@@ -71,5 +96,4 @@ console.log(findId)
 
 
 
-// todos[0].userId = newId
-// const element = users[0].name[i];
+
